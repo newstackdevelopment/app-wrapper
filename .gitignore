@@ -8,8 +8,12 @@
 
 # production
 /build
+/lib
+
 # demo
 /demo
+
+
 # misc
 .DS_Store
 .env.local
