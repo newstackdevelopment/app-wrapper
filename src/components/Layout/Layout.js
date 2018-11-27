@@ -16,6 +16,7 @@ const { Content } = Layout;
  * General component description in JSDoc format. Markdown is *supported*.
  */
 class App extends Component {
+  //test
   toggleDrawer = () => {
     this.props.toggleDrawer && this.props.toggleDrawer(!this.props.drawer.show);
   };
@@ -78,5 +79,7 @@ class App extends Component {
     );
   }
 }
-
+App.propTypes = {
+  toggleDrawer: function(props, propName, componentName) {}
+};
 export default App;

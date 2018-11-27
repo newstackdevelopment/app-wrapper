@@ -1,6 +1,6 @@
 {
   "name": "dw-app-wrapper",
-  "version": "1.0.03",
+  "version": "1.0.04",
   "description": "dw-app-wrapper React component",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -30,7 +30,8 @@
     "babel-plugin-import": "^1.11.0",
     "nwb": "0.23.x",
     "react": "^16.6.3",
-    "react-dom": "^16.6.3"
+    "react-dom": "^16.6.3",
+    "react-styleguidist": "^8.0.6"
   },
   "author": "",
   "homepage": "",

@@ -9,6 +9,7 @@
 # production
 /build
 /lib
+/styleguide
 
 # demo
 /demo/dist
