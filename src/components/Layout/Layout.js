@@ -1,17 +1,27 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
-// import { withRouter } from 'react-router'
-// import { connect } from 'react-redux';
-// import { mapDispatchToProps, mapStateToProps } from './AppConnector';
 import { Layout, Row, Col } from "antd";
 import { Header } from "../";
 import { Drawer } from "../";
 import { Breadcrumb } from "../";
-// import AppConsts from '../../Store/DataState/App/AppConsts';
-// import Routes from '../../Routes/Routes';
 import { notification } from "antd";
+import { DrawerActions, HeaderActions } from "../../state/Actions";
 const { Content } = Layout;
+const mapStateToProps = ({ drawer, header }) => {
+  return {
+    drawer,
+    header
+  };
+};
 
+const mapDispatchToProps = dispatch => {
+  return {
+    toggleDrawer: show => dispatch(DrawerActions.toggleDrawer(show)),
+    updateMenuItems: props => dispatch(DrawerActions.updateMenuItems),
+    setSearchValue: value => dispatch(HeaderActions.setSearchValue(value))
+  };
+};
 /**
  * General component description in JSDoc format. Markdown is *supported*.
  */
@@ -82,4 +92,8 @@ class App extends Component {
 App.propTypes = {
   toggleDrawer: function(props, propName, componentName) {}
 };
+export const WithStore = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
 export default App;

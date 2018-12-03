@@ -1,6 +1,6 @@
 {
   "name": "dw-app-wrapper",
-  "version": "1.0.04",
+  "version": "1.0.12",
   "description": "dw-app-wrapper React component",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -17,18 +17,24 @@
     "start": "nwb serve-react-demo",
     "test": "nwb test-react",
     "test:coverage": "nwb test-react --coverage",
-    "test:watch": "nwb test-react --server"
+    "test:watch": "nwb test-react --server",
+    "flow": "flow"
   },
   "dependencies": {
     "antd": "^3.10.7",
-    "react-router-dom": "^4.3.1"
+    "react-redux": "^5.1.1",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
   },
   "peerDependencies": {
     "react": "16.x"
   },
   "devDependencies": {
     "babel-plugin-import": "^1.11.0",
+    "flow-bin": "^0.87.0",
     "nwb": "0.23.x",
+    "nwb-less": "^0.7.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-styleguidist": "^8.0.6"

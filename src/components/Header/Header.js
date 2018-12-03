@@ -1,19 +1,35 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { Layout, Button, Row, Col, Input } from "antd";
-const { Header } = Layout;
+const { Header: LibraryHeader } = Layout;
 const { Search } = Input;
 const ENTER = 13;
-export default class DowHeader extends Component {
+/**
+ * Custom Header
+ */
+class Header extends Component {
+  static defaultProps = {
+    onSearch: null,
+    setSearchValue: null
+  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchValue: ""
+    };
+  }
   setSearchValue = e => {
     var code = e.keyCode || e.charCode;
-    return code === ENTER
-      ? this.props.onSearch && this.props.onSearch(e)
-      : this.props.setSearchValue(e.target.value);
+    if (code === ENTER) {
+      return this.props.onSearch && this.props.onSearch(e);
+    }
+    this.setState({ searchValue: e.target.value });
+    this.props.setSearchValue(e.target.value);
   };
   render() {
     const { props } = this;
     return (
-      <Header style={{ padding: 0 }}>
+      <LibraryHeader style={{ padding: 0 }}>
         <Row>
           {props.toggleDrawer && this.props.hasDrawer && (
             <Col
@@ -69,7 +85,19 @@ export default class DowHeader extends Component {
             )}
           </Col>
         </Row>
-      </Header>
+      </LibraryHeader>
     );
   }
 }
+Header.propTypes = {
+  /**
+   *function(searchEvent) { } : Event when enterbutton is pressed. .
+   */
+  onSearch: PropTypes.func,
+  /**
+   * function() { } : Action that happens onKeyup.
+   * This would be a good spot to set the header searchValue to exterior state.
+   */
+  setSearchValue: PropTypes.func
+};
+export default Header;

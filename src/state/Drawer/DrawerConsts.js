@@ -1,0 +1,6 @@
+export const TOGGLE_DRAWER = "TOGGLE_DRAWER";
+export const UPDATE_MENU_ITEMS = "UPDATE_MENU_ITEMS";
+export default {
+  TOGGLE_DRAWER,
+  UPDATE_MENU_ITEMS
+};

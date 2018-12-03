@@ -1,5 +1,5 @@
-DowHeader example:
+Header example:
 
 ```js
-<DowHeader hasDrawer={true} toggleDrawer={() => {}} appName="test" />
+<Header hasDrawer={true} toggleDrawer={() => {}} appName="test" />
 ```
