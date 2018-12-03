@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Layout, Row, Col } from "antd";
 import { Header } from "../";
@@ -7,7 +8,9 @@ import { Drawer } from "../";
 import { Breadcrumb } from "../";
 import { notification } from "antd";
 import { DrawerActions, HeaderActions } from "../../state/Actions";
+
 const { Content } = Layout;
+
 const mapStateToProps = ({ drawer, header }) => {
   return {
     drawer,
@@ -89,11 +92,21 @@ class App extends Component {
     );
   }
 }
+
 App.propTypes = {
   toggleDrawer: function(props, propName, componentName) {}
 };
+
 export const WithStore = connect(
   mapStateToProps,
   mapDispatchToProps
 )(App);
+
+export const WithStoreAndRouter = withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(App)
+);
+
 export default App;

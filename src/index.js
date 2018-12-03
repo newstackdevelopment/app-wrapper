@@ -1,18 +1,21 @@
 import React, { Component } from "react";
-import { Layout, WithStore } from "./components";
+import { Layout, WithStoreAndRouter as Connected } from "./components";
 import { combineReducers, createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { Provider, connect } from "react-redux";
 import { HashRouter as Router } from "react-router-dom";
 import dwReducers from "./state/Reducers";
 import { DrawerActions, HeaderActions } from "./state/Actions";
+
 const empty = (state = {}, action) => {
   return { ...state, testState: {} };
 };
+
 export const WrapperActions = {
   drawerActions: { ...DrawerActions },
   headerActions: HeaderActions
 };
+
 export const WithStoreAndRouter = ({
   reducers = { empty },
   middleWare,
@@ -32,7 +35,7 @@ export const WithStoreAndRouter = ({
       return (
         <Provider store={configuredStore}>
           <Router {...routerProps}>
-            <WithStore {...this.props}>{this.props.children}</WithStore>
+            <Connected {...this.props}>{this.props.children}</Connected>
           </Router>
         </Provider>
       );
