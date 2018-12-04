@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { WrapperActions } from "../../src";
 const { drawerActions } = WrapperActions;
@@ -55,4 +55,9 @@ class Routes extends Component {
     );
   }
 }
-export default Routes;
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Routes)
+);

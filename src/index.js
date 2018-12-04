@@ -6,7 +6,7 @@ import { Provider, connect } from "react-redux";
 import { HashRouter as Router } from "react-router-dom";
 import dwReducers from "./state/Reducers";
 import { DrawerActions, HeaderActions } from "./state/Actions";
-
+export {DwForm}from './components';
 const empty = (state = {}, action) => {
   return { ...state, testState: {} };
 };
@@ -42,7 +42,6 @@ export const WithStoreAndRouter = ({
     }
   };
 };
-
 /**
  * General component description in JSDoc format. Markdown is *supported*.
  */
