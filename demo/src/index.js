@@ -18,8 +18,18 @@ class Demo extends Component {
   render() {
     return (
       <div>
-        <h1>dw-app-wrapper Demo</h1>
+        <h1>dw-app-wrapper Card Demo</h1>
         <ConnectedApp hasDrawer={true} hasBreadcrumb={true}>
+          <Routes {...this.props} />
+          <DwForm fields={formFields} model={formData} />
+        </ConnectedApp>
+        <h1>dw-app-wrapper fullpage Demo</h1>
+        <ConnectedApp
+          hasHeader={false}
+          hasDrawer={true}
+          hasBreadcrumb={true}
+          contentStyle={{ background: "#fff" }}
+        >
           <Routes {...this.props} />
           <DwForm fields={formFields} model={formData} />
         </ConnectedApp>

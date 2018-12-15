@@ -50,6 +50,15 @@ class App extends Component {
     this.props.onHeaderSearch && this.props.onHeaderSearch(e, this);
   };
   render() {
+    const {
+      contentStyle = {
+        margin: "24px 16px",
+        padding: 24,
+        background: "#fff",
+        minHeight: 280
+      },
+      hasHeader = true
+    } = this.props;
     const drawerProps = {
       ...this.props.drawer,
       toggleDrawer: this.toggleDrawer
@@ -65,11 +74,13 @@ class App extends Component {
       <Layout style={{ minHeight: "100vh" }}>
         <Drawer {...drawerProps} />
         <Layout>
-          <Header
-            {...headerProps}
-            {...this.props.pageSettings}
-            onSearch={this.onHeaderSearch}
-          />
+          {hasHeader && (
+            <Header
+              {...headerProps}
+              {...this.props.pageSettings}
+              onSearch={this.onHeaderSearch}
+            />
+          )}
           <Row>
             <Col xs={0} sm={24}>
               {this.props.hasBreadcrumb && (
@@ -77,16 +88,7 @@ class App extends Component {
               )}
             </Col>
           </Row>
-          <Content
-            style={{
-              margin: "24px 16px",
-              padding: 24,
-              background: "#fff",
-              minHeight: 280
-            }}
-          >
-            {this.props.children}
-          </Content>
+          <Content style={contentStyle}>{this.props.children}</Content>
         </Layout>
       </Layout>
     );
