@@ -67,8 +67,10 @@ class App extends Component {
         <Layout>
           <Header
             {...headerProps}
+            onSearch={
+              this.props.onHeaderSearch ? this.onHeaderSearch : undefined
+            }
             {...this.props.pageSettings}
-            onSearch={this.onHeaderSearch}
           />
           <Row>
             <Col xs={0} sm={24}>
