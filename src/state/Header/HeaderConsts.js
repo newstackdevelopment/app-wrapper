@@ -1,5 +1,7 @@
 export const SET_SEARCH_VALUE = "SET_SEARCH_VALUE";
+export const SET_HEADER_PROPS = "SET_HEADER_PROPS";
 
 export default {
-  SET_SEARCH_VALUE
+  SET_SEARCH_VALUE,
+  SET_HEADER_PROPS
 };
