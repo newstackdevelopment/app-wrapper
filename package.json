@@ -1,6 +1,6 @@
 {
   "name": "dw-app-wrapper",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "description": "dw-app-wrapper React component",
   "main": "lib/index.js",
   "module": "es/index.js",
