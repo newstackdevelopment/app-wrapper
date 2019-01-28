@@ -28,6 +28,7 @@ class Header extends Component {
   };
   render() {
     const { props } = this;
+    const { theme } = props;
     return (
       <LibraryHeader style={{ padding: 0 }}>
         <Row>
@@ -45,7 +46,10 @@ class Header extends Component {
                 ghost
                 icon={false ? "menu-unfold" : "menu-fold"}
                 size={"large"}
-                style={{ borderStyle: "none" }}
+                style={{
+                  borderStyle: "none",
+                  color: theme === "dark" ? "#ffffff" : "#000000"
+                }}
               />
             </Col>
           )}
@@ -65,7 +69,13 @@ class Header extends Component {
             )}
           </Col>
           <Col xs={12} sm={8} md={6} lg={6} xl={4}>
-            <h1>{props.appName || "Default App"}</h1>
+            <h1
+              style={{
+                color: theme === "dark" ? "#ffffff" : "#000000"
+              }}
+            >
+              {props.appName || "Default App"}
+            </h1>
           </Col>
           <Col
             xs={0}

@@ -9,7 +9,17 @@ const mapDispatchToProps = dispatch => ({
   setItems: menuItems =>
     dispatch(
       drawerActions.updateMenuItems([
-        { name: "about", title: "About", path: "/about" }
+        { name: "about", title: "About", path: "/about", icon: "search" },
+        { name: "about", title: "About", path: "/about" },
+        {
+          name: "about",
+          title: "About",
+          path: "/about",
+          menuItems: [
+            { name: "about", title: "About", path: "/about" },
+            { name: "about", title: "About", path: "/about" }
+          ]
+        }
       ])
     )
 });

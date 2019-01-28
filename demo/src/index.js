@@ -19,7 +19,12 @@ class Demo extends Component {
     return (
       <div>
         <h1>dw-app-wrapper Card Demo</h1>
-        <ConnectedApp hasDrawer={true} hasBreadcrumb={true}>
+        <ConnectedApp
+          hasDrawer={true}
+          hasBreadcrumb={true}
+          theme="dark"
+          onHeaderSearch={() => {}}
+        >
           <Routes {...this.props} />
           <DwForm fields={formFields} model={formData} />
         </ConnectedApp>

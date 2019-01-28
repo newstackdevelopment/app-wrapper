@@ -57,18 +57,21 @@ class App extends Component {
         background: "#fff",
         minHeight: 280
       },
-      hasHeader = true
+      hasHeader = true,
+      theme = "default"
     } = this.props;
     const drawerProps = {
       ...this.props.drawer,
-      toggleDrawer: this.toggleDrawer
+      toggleDrawer: this.toggleDrawer,
+      theme
     };
     const headerProps = {
       ...this.props.header,
       hasDrawer: this.props.hasDrawer,
       toggleDrawer: this.toggleDrawer,
       appName: this.props.appName,
-      setSearchValue: this.props.setSearchValue
+      setSearchValue: this.props.setSearchValue,
+      theme
     };
     return (
       <Layout style={{ minHeight: "100vh" }}>
