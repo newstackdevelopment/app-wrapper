@@ -50,8 +50,8 @@ module.exports = {
                 //   "@dow-red-primary": "@dow-red-6",
 
                 //   //layout dow red
-                // "@layout-header-background": "#FFFFFF",
-                // "@layout-body-background": "#FFFFFF"
+                "@layout-header-background": "#FFFFFF",
+                "@layout-body-background": "#FFFFFF"
                 //   "@menu-submenu-bg": "#c20030",
                 //   "@menu-item-active-bg": "#ff7a8a",
                 //   "@menu-bg": "@dow-red-primary",

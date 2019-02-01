@@ -4,7 +4,7 @@ import Example, { WithStoreAndRouter, DwForm, WrapperActions } from "../../src";
 import Routes from "./routes";
 import { appReducer as app } from "./state";
 import formData from "./dummyFormData.json";
-import Logo from "./public/testIcon.png";
+import Logo from "./public/testLogo.png";
 const formFields = [
   {
     name: "name",
@@ -28,10 +28,13 @@ class Demo extends Component {
         <ConnectedApp
           hasDrawer={true}
           hasBreadcrumb={true}
-          onHeaderSearch={() => {}}
+          // onHeaderSearch={() => {}}
           user={{ firstName: "John", lastName: "Q" }}
           headerProps={{ logo: { src: Logo } }}
           appName={"Really Awesome App"}
+          onUserIconClick={() => {
+            console.log("clickIcon");
+          }}
         >
           <Routes {...this.props} />
           <DwForm fields={formFields} model={formData} />

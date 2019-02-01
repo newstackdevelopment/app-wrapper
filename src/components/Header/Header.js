@@ -41,7 +41,7 @@ class Header extends Component {
       theme,
       logo,
       onSearch,
-      user = { firstName: "", lastName: "" },
+      user,
       hasDrawer,
       onUserIconClick,
       toggleDrawer,
@@ -77,13 +77,17 @@ class Header extends Component {
               sm={0}
               md={4}
               lg={3}
-              xl={3}
+              xl={2}
               style={{ textAlign: "center" }}
             >
-              <img src={logo.src} alt={logo.alt ? logo.alt : "missing alt"} />
+              <img
+                style={{ width: "100%" }}
+                src={logo.src}
+                alt={logo.alt ? logo.alt : "missing alt"}
+              />
             </Col>
           )}
-          <Col xs={15} sm={12} md={9} lg={8} xl={7}>
+          <Col xs={15} sm={12} md={9} lg={8} xl={!logo ? 7 : 8}>
             <h1
               style={{
                 color: theme === "dark" ? "#ffffff" : "#000000"
@@ -96,9 +100,9 @@ class Header extends Component {
             {...{
               xs: { span: 0, offset: 0 },
               sm: { span: 8, offset: 0 },
-              md: { span: 6, offset: !logo ? 9 : 1 },
-              lg: { span: 5, offset: !logo ? 9 : 5 },
-              xl: { span: 6, offset: !logo ? 10 : 6 }
+              md: { span: !logo ? 7 : 6, offset: !logo ? 4 : 1 },
+              lg: { span: !logo ? 7 : 5, offset: !logo ? 7 : 5 },
+              xl: { span: !logo ? 7 : 6, offset: !logo ? 8 : 6 }
             }}
           >
             {onSearch && (
@@ -115,25 +119,20 @@ class Header extends Component {
               xs: { span: 3, offset: 3 },
               sm: { span: 1, offset: 0 },
               md: { span: 1, offset: 0 },
-              lg: { span: 2, offset: 0 },
+              lg: { span: 1, offset: 0 },
               xl: { span: 1, offset: 0 }
             }}
           >
             {user && (
               <Avatar
                 onClick={onUserIconClick}
-                icon={user.firstName ? undefined : "user"}
+                icon={user.name ? undefined : "user"}
                 style={{
                   backgroundColor: randomColor,
                   verticalAlign: "middle"
                 }}
               >
-                {user.firstName !== "" && user.lastName !== "" && (
-                  <span>
-                    {user.firstName.substring(0, 1) +
-                      user.lastName.substring(0, 1)}
-                  </span>
-                )}
+                {user.name}
               </Avatar>
             )}
           </Col>
