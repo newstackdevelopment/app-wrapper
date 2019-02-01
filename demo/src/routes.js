@@ -26,7 +26,6 @@ const mapDispatchToProps = dispatch => ({
 
 class Home extends Component {
   componentDidMount() {
-    console.log("here");
     this.props.setItems();
   }
   render() {

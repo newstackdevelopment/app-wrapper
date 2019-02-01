@@ -1,9 +1,18 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Layout, Button, Row, Col, Input } from "antd";
+import { Layout, Button, Row, Col, Input, Avatar } from "antd";
 const { Header: LibraryHeader } = Layout;
 const { Search } = Input;
 const ENTER = 13;
+var randomColorCreator = function randomColorCreator() {
+  var rgb = [];
+
+  for (var i = 0; i < 3; i++) {
+    rgb.push(Math.floor(Math.random() * 255));
+  }
+  return "rgb(" + rgb.join(",") + ")";
+};
+var randomColor = randomColorCreator();
 /**
  * Custom Header
  */
@@ -28,13 +37,22 @@ class Header extends Component {
   };
   render() {
     const { props } = this;
-    const { theme } = props;
+    const {
+      theme,
+      logo,
+      onSearch,
+      user = { firstName: "", lastName: "" },
+      hasDrawer,
+      onUserIconClick,
+      toggleDrawer,
+      appName = "Default App"
+    } = props;
     return (
-      <LibraryHeader style={{ padding: 0 }}>
-        <Row>
-          {props.toggleDrawer && this.props.hasDrawer && (
+      <LibraryHeader style={{ padding: 0, borderBottom: "1px solid #d9d9d9" }}>
+        <Row gutter={16}>
+          {toggleDrawer && hasDrawer && (
             <Col
-              onClick={props.toggleDrawer}
+              onClick={toggleDrawer}
               xs={3}
               sm={2}
               md={2}
@@ -53,45 +71,70 @@ class Header extends Component {
               />
             </Col>
           )}
-          <Col
-            xs={0}
-            sm={0}
-            md={7}
-            lg={6}
-            xl={4}
-            style={{ textAlign: "center" }}
-          >
-            {props.logo && (
-              <img
-                src={props.logo.src}
-                alt={props.logo.alt ? props.logo.alt : "missing alt"}
-              />
-            )}
-          </Col>
-          <Col xs={12} sm={8} md={6} lg={6} xl={4}>
+          {logo && (
+            <Col
+              xs={0}
+              sm={0}
+              md={4}
+              lg={3}
+              xl={3}
+              style={{ textAlign: "center" }}
+            >
+              <img src={logo.src} alt={logo.alt ? logo.alt : "missing alt"} />
+            </Col>
+          )}
+          <Col xs={15} sm={12} md={9} lg={8} xl={7}>
             <h1
               style={{
                 color: theme === "dark" ? "#ffffff" : "#000000"
               }}
             >
-              {props.appName || "Default App"}
+              {appName}
             </h1>
           </Col>
           <Col
-            xs={0}
-            sm={7}
-            md={6}
-            lg={4}
-            xl={4}
-            style={{ textAlign: "center", float: "right" }}
+            {...{
+              xs: { span: 0, offset: 0 },
+              sm: { span: 8, offset: 0 },
+              md: { span: 6, offset: !logo ? 9 : 1 },
+              lg: { span: 5, offset: !logo ? 9 : 5 },
+              xl: { span: 6, offset: !logo ? 10 : 6 }
+            }}
           >
-            {this.props.onSearch && (
+            {onSearch && (
               <Search
                 placeholder="input search text"
-                onSearch={props.onSearch}
+                onSearch={onSearch}
                 onKeyUp={this.setSearchValue}
-                style={{ width: 200 }}
+                style={{ width: "100%" }}
               />
+            )}
+          </Col>
+          <Col
+            {...{
+              xs: { span: 3, offset: 3 },
+              sm: { span: 1, offset: 0 },
+              md: { span: 1, offset: 0 },
+              lg: { span: 2, offset: 0 },
+              xl: { span: 1, offset: 0 }
+            }}
+          >
+            {user && (
+              <Avatar
+                onClick={onUserIconClick}
+                icon={user.firstName ? undefined : "user"}
+                style={{
+                  backgroundColor: randomColor,
+                  verticalAlign: "middle"
+                }}
+              >
+                {user.firstName !== "" && user.lastName !== "" && (
+                  <span>
+                    {user.firstName.substring(0, 1) +
+                      user.lastName.substring(0, 1)}
+                  </span>
+                )}
+              </Avatar>
             )}
           </Col>
         </Row>

@@ -10,7 +10,7 @@ export default class DowDrawer extends Component {
       color: theme === "dark" ? "#ffffff" : "#000000"
     };
     const dividerThemeStyle = {
-      backgroundColor: theme === "dark" ? "#ffffff" : "#000000"
+      backgroundColor: theme === "dark" ? "#ffffff" : "#d9d9d9"
     };
 
     return (
