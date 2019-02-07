@@ -60,11 +60,13 @@ class App extends Component {
       hasHeader = true,
       theme = "default",
       user,
-      onUserIconClick
+      onUserIconClick,
+      hideDrawerOnClick = true
     } = this.props;
     const drawerProps = {
       ...this.props.drawer,
       toggleDrawer: this.toggleDrawer,
+      hideOnClick: hideDrawerOnClick,
       theme
     };
     const headerProps = {

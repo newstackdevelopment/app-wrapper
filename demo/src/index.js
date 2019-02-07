@@ -35,6 +35,7 @@ class Demo extends Component {
           onUserIconClick={() => {
             console.log("clickIcon");
           }}
+          // hideDrawerOnClick={false}
         >
           <Routes {...this.props} />
           <DwForm fields={formFields} model={formData} />
