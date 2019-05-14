@@ -18,7 +18,7 @@ export const WrapperActions = {
 
 export const WithStoreAndRouter = ({
   reducers = { empty },
-  middleWare,
+  middleWare = [],
   routerProps = {},
   ...otherProps
 } = {}) => {
@@ -27,7 +27,11 @@ export const WithStoreAndRouter = ({
     ...dwReducers
   });
   const configureStore = (initialState = {}) => {
-    return createStore(combinedReducers, initialState, applyMiddleware(thunk));
+    return createStore(
+      combinedReducers,
+      initialState,
+      applyMiddleware(...[thunk, ...middleWare])
+    );
   };
   const configuredStore = configureStore();
   return class extends Component {

@@ -53,21 +53,21 @@ class Header extends Component {
               />
             </Col>
           )}
-          <Col
-            xs={0}
-            sm={0}
-            md={7}
-            lg={6}
-            xl={4}
-            style={{ textAlign: "center" }}
-          >
-            {props.logo && (
+          {props.logo && (
+            <Col
+              xs={0}
+              sm={0}
+              md={7}
+              lg={6}
+              xl={4}
+              style={{ textAlign: "center" }}
+            >
               <img
                 src={props.logo.src}
                 alt={props.logo.alt ? props.logo.alt : "missing alt"}
               />
-            )}
-          </Col>
+            </Col>
+          )}
           <Col xs={12} sm={8} md={6} lg={6} xl={4}>
             <h1
               style={{

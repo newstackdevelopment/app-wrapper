@@ -4,6 +4,9 @@ import Example, { WithStoreAndRouter, DwForm } from "../../src";
 import Routes from "./routes";
 import { appReducer as app } from "./state";
 import formData from "./dummyFormData.json";
+const customMiddleWare = store => next => action => {
+  console.log(store);
+};
 const formFields = [
   {
     name: "name",
@@ -11,7 +14,8 @@ const formFields = [
   }
 ];
 const ConnectedApp = WithStoreAndRouter({
-  reducers: { app }
+  reducers: { app },
+  middleWare: [customMiddleWare]
 });
 
 class Demo extends Component {
