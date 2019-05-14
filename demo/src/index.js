@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
-import Example, { WithStoreAndRouter, DwForm } from "../../src";
+import Example, { WithStoreAndRouter, DwForm, WrapperActions } from "../../src";
 import Routes from "./routes";
 import { appReducer as app } from "./state";
 import formData from "./dummyFormData.json";
+import Logo from "./public/testLogo.png";
 const customMiddleWare = store => next => action => {
   console.log(store);
 };
@@ -19,6 +20,11 @@ const ConnectedApp = WithStoreAndRouter({
 });
 
 class Demo extends Component {
+  // componentDidMount() {
+  //   this.props.store.dispatch(
+  //     WrapperActions.setHeaderValue({ logo: { src: "./public/testIcon.png" } })
+  //   );
+  // }
   render() {
     return (
       <div>
@@ -26,8 +32,14 @@ class Demo extends Component {
         <ConnectedApp
           hasDrawer={true}
           hasBreadcrumb={true}
-          theme="dark"
-          onHeaderSearch={() => {}}
+          // onHeaderSearch={() => {}}
+          user={{ firstName: "John", lastName: "Q" }}
+          headerProps={{ logo: { src: Logo } }}
+          appName={"Really Awesome App"}
+          onUserIconClick={() => {
+            console.log("clickIcon");
+          }}
+          // hideDrawerOnClick={false}
         >
           <Routes {...this.props} />
           <DwForm fields={formFields} model={formData} />

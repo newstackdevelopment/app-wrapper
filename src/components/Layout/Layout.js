@@ -6,7 +6,7 @@ import { Layout, Row, Col } from "antd";
 import { Header } from "../";
 import { Drawer } from "../";
 import { Breadcrumb } from "../";
-import { notification } from "antd";
+import { notification, Affix } from "antd";
 import { DrawerActions, HeaderActions } from "../../state/Actions";
 
 const { Content } = Layout;
@@ -58,33 +58,44 @@ class App extends Component {
         minHeight: 280
       },
       hasHeader = true,
-      theme = "default"
+      theme = "default",
+      user,
+      onUserIconClick,
+      hideDrawerOnClick = true
     } = this.props;
     const drawerProps = {
       ...this.props.drawer,
       toggleDrawer: this.toggleDrawer,
+      hideOnClick: hideDrawerOnClick,
       theme
     };
     const headerProps = {
       ...this.props.header,
+      ...this.props.headerProps,
+      onUserIconClick,
       hasDrawer: this.props.hasDrawer,
       toggleDrawer: this.toggleDrawer,
       appName: this.props.appName,
       setSearchValue: this.props.setSearchValue,
+      user,
       theme
     };
     return (
       <Layout style={{ minHeight: "100vh" }}>
-        <Drawer {...drawerProps} />
+        <Affix offsetTop={65}>
+          <Drawer {...drawerProps} />
+        </Affix>
         <Layout>
           {hasHeader && (
-            <Header
-              {...headerProps}
-              onSearch={
-                this.props.onHeaderSearch ? this.onHeaderSearch : undefined
-              }
-              {...this.props.pageSettings}
-            />
+            <Affix>
+              <Header
+                {...headerProps}
+                onSearch={
+                  this.props.onHeaderSearch ? this.onHeaderSearch : undefined
+                }
+                {...this.props.pageSettings}
+              />
+            </Affix>
           )}
           <Row>
             <Col xs={0} sm={24}>

@@ -5,12 +5,12 @@ const { SubMenu } = Menu;
 const { Sider } = Layout;
 export default class DowDrawer extends Component {
   render() {
-    const { theme } = this.props;
+    const { theme, toggleDrawer, hideOnClick } = this.props;
     const themeStyle = {
       color: theme === "dark" ? "#ffffff" : "#000000"
     };
     const dividerThemeStyle = {
-      backgroundColor: theme === "dark" ? "#ffffff" : "#000000"
+      backgroundColor: theme === "dark" ? "#ffffff" : "#d9d9d9"
     };
 
     return (
@@ -27,7 +27,10 @@ export default class DowDrawer extends Component {
             this.props.menuItems.map((item, itemIndex) => {
               if (!item.menuItems) {
                 return [
-                  <Menu.Item key={`menuItem${itemIndex}`}>
+                  <Menu.Item
+                    key={`menuItem${itemIndex}`}
+                    onClick={hideOnClick ? toggleDrawer : undefined}
+                  >
                     <Link to={item.path} style={themeStyle}>
                       {item.icon && <Icon type={item.icon} />}
                       <span>{item.title}</span>
@@ -53,7 +56,10 @@ export default class DowDrawer extends Component {
                   >
                     {item.menuItems.map((subItem, subItemIndex) => {
                       return [
-                        <Menu.Item key={`subMenuItem${subItemIndex}`}>
+                        <Menu.Item
+                          key={`subMenuItem${subItemIndex}`}
+                          onClick={hideOnClick ? toggleDrawer : undefined}
+                        >
                           <Link to={subItem.path} style={themeStyle}>
                             {subItem.icon && <Icon type={subItem.icon} />}
                             <span>{subItem.title}</span>
