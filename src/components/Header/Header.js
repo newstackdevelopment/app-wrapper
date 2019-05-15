@@ -48,7 +48,13 @@ class Header extends Component {
       appName = "Default App"
     } = props;
     return (
-      <LibraryHeader style={{ padding: 0, borderBottom: "1px solid #d9d9d9" }}>
+      <LibraryHeader
+        style={{
+          padding: 0,
+          borderBottom: "1px solid #d9d9d9",
+          height: "80px"
+        }}
+      >
         <Row gutter={16}>
           {toggleDrawer && hasDrawer && (
             <Col
@@ -78,7 +84,7 @@ class Header extends Component {
               md={4}
               lg={3}
               xl={2}
-              style={{ textAlign: "center" }}
+              style={{ textAlign: "center", height: "80px" }}
             >
               <img
                 style={{ width: "100%" }}
@@ -127,6 +133,7 @@ class Header extends Component {
               <Avatar
                 onClick={onUserIconClick}
                 icon={user.name ? undefined : "user"}
+                size="large"
                 style={{
                   backgroundColor: randomColor,
                   verticalAlign: "middle"
